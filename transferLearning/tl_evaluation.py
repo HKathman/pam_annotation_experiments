@@ -11,9 +11,9 @@ from classificationHead import linear_classification_head as LinClassificationHe
 import utils
 
 
-def evaluateTransferLearningModels(data_tag, f1_metric):
+def evaluate_transfer_learning_models(data_tag, f1_metric):
 
-    utils.createFolder(cfg.path_results_dataset_tl_evaluation)
+    utils.create_folder(cfg.path_results_dataset_tl_evaluation)
 
     df_results_name = 'transfer_learning_' + f1_metric + '_f1_' + data_tag + '.csv'
     if os.path.exists(cfg.path_results_dataset_tl_evaluation / df_results_name):

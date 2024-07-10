@@ -53,11 +53,15 @@ and stored in results/my_awesome_dataset/02-transfer_learning\embeddings\embeddi
 
 ### STEP 3: Create data devision dataframe (transfer learning without active learning)
 Creates a data devision df for transfer learning with the different datasets used for training. Stored in
-results/example_dataset/02-transfer_learning/training_split.pickle
+results/my_awesome_dataset/02-transfer_learning/training_split.pickle
 
 ### STEP 4: Transfer Learning Models
 Creates the transfer learning models with the number of random seeds specified in config.py and saves the models to
-results/example_dataset/02-transfer_learning/trained_models.
+results/my_awesome_dataset/02-transfer_learning/trained_models.
+
+### STEP 5: Evaluate the transfer learning
+Creates transfer learning tables with results for all model/seed combinations and the average, median and standart deviation.
+The csv-files are saved to results/my_awesome_dataset/02-transfer_learning/evaluation
 
 
 

@@ -7,7 +7,7 @@ import tensorflow as tf
 
 import config as cfg
 from preprocessing import raw_dataset
-from transferLearning import tl_model, tl_dataset_devision, tl_training# tl_evaluation as tlEval
+from transferLearning import tl_model, tl_dataset_devision, tl_training, tl_evaluation
 #from activeLearning import al_training as alTrain, al_evaluation as alEval
 
 
@@ -23,12 +23,10 @@ tl_dataset_devision.create_data_tag_for_transfer_learning()
 # STEP 4: Train and save models with transferLearning embeddings
 tl_training.train_and_save_transfer_learning_models()
 
-'''
-STEP 5: Evaluate transfer learning models
-'''
-#for f1_metric in ['micro', 'macro']:
-#    for data_tag in [cfg.tag_validation, cfg.tag_train, cfg.tag_test]:
-#        tlEval.evaluateTransferLearningModels(data_tag, f1_metric)
+# STEP 5: Evaluate transfer learning models
+for f1_metric in ['micro', 'macro']:
+    for data_tag in [cfg.tag_validation, cfg.tag_train, cfg.tag_test]:
+        tl_evaluation.evaluate_transfer_learning_models(data_tag, f1_metric)
 
 
 '''
