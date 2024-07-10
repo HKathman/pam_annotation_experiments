@@ -8,12 +8,13 @@ import tensorflow as tf
 
 import config as cfg
 import utils
-from classificationHead import linear_classification_head as LinClassificationHead
+from classificationHead import linear_classification_head
 
-def trainAndSaveTransferLearningModels():
 
-    utils.createFolder(cfg.path_results_dataset_tl_trained_models)
-    utils.createFolder(cfg.path_results_dataset_tl_trained_models_logs)
+def train_and_save_transfer_learning_models():
+
+    utils.create_folder(cfg.path_results_dataset_tl_trained_models)
+    utils.create_folder(cfg.path_results_dataset_tl_trained_models_logs)
 
     # get all numpy files from embedding folder
     embeddings = [file for file in os.listdir(cfg.path_results_dataset_tl_embedding) if file.endswith('.npy')]
@@ -65,11 +66,11 @@ def trainAndSaveTransferLearningModels():
             y_val = tf.convert_to_tensor(y_val, dtype=tf.int32)
 
             # create model
-            model = LinClassificationHead.createModel(x_data, y_data)
+            model = linear_classification_head.create_model(x_data, y_data)
 
             # train model
             log_dir = cfg.path_results_dataset_tl_trained_models_logs / file_model.split('.')[0]
-            history = LinClassificationHead.trainModel(model, x_train, y_train, x_val, y_val, log_dir=log_dir)
+            history = linear_classification_head.train_model(model, x_train, y_train, x_val, y_val, log_dir=log_dir)
 
             # save model
             file_history = file_model.split('.')[0] + '_history.pkl'
@@ -83,7 +84,7 @@ def trainAndSaveTransferLearningModels():
 
 
 if __name__ == '__main__':
-    trainAndSaveTransferLearningModels()
+    train_and_save_transfer_learning_models()
 
 
 

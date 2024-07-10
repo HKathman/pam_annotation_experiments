@@ -7,7 +7,7 @@ import tensorflow as tf
 
 import config as cfg
 from preprocessing import raw_dataset
-from transferLearning import tl_model, tl_dataset_devision #tl_training as tlTrain, tl_evaluation as tlEval
+from transferLearning import tl_model, tl_dataset_devision, tl_training# tl_evaluation as tlEval
 #from activeLearning import al_training as alTrain, al_evaluation as alEval
 
 
@@ -20,10 +20,8 @@ tl_model.calculate_and_save_embeddings()
 # STEP 3: Create data devision dataframe (transfer learning without active learning)
 tl_dataset_devision.create_data_tag_for_transfer_learning()
 
-'''
-STEP 4: Train and save models with transferLearning embeddings
-'''
-#tlTrain.trainAndSaveTransferLearningModels()
+# STEP 4: Train and save models with transferLearning embeddings
+tl_training.train_and_save_transfer_learning_models()
 
 '''
 STEP 5: Evaluate transfer learning models
