@@ -8,7 +8,7 @@ import tensorflow as tf
 import config as cfg
 from preprocessing import raw_dataset
 from transferLearning import tl_model, tl_dataset_devision, tl_training, tl_evaluation
-#from activeLearning import al_training as alTrain, al_evaluation as alEval
+from activeLearning import al_training #, al_evaluation as alEval
 
 
 # STEP 1: Unifying dataset format
@@ -24,15 +24,13 @@ tl_dataset_devision.create_data_tag_for_transfer_learning()
 tl_training.train_and_save_transfer_learning_models()
 
 # STEP 5: Evaluate transfer learning models
-for f1_metric in ['micro', 'macro']:
-    for data_tag in [cfg.tag_validation, cfg.tag_train, cfg.tag_test]:
-        tl_evaluation.evaluate_transfer_learning_models(data_tag, f1_metric)
+#for f1_metric in ['micro', 'macro']:
+#    for data_tag in [cfg.tag_validation, cfg.tag_train, cfg.tag_test]:
+#        tl_evaluation.evaluate_transfer_learning_models(data_tag, f1_metric)
 
 
-'''
-STEP 6: Embedding: 'birdnet_1' | Evaluate active learning uncertainty score generation (max vs. average)
-'''
-#alTrain.trainActiveLearningModels()
+# STEP 6: Embedding: 'birdnet_1' | Evaluate active learning uncertainty score generation (max vs. average)
+al_training.train_active_learning_models()
 
 
 '''
