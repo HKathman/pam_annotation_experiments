@@ -43,6 +43,9 @@ dataset, with the 3 columns "audio_path", "['species_1', 'species_2', ...]" and 
 results/my_awesome_dataset/01-dataset_metadata/my_awesome_dataset_metadata.pickle
 
 ### STEP 2: Embed the dataset
+1. Create a folder "models" in folder "transferLearning" and download birdnet v2.4 (https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints)
+and vggish (https://github.com/tensorflow/models/tree/master/research/audioset/vggish) into that folder.
+Make sure that the file paths in config.py match your local file paths.
 Using the embeddings specified in config.py, embeddings for different embedding models and layers are generated 
 and stored in results/my_awesome_dataset/02-transfer_learning\embeddings\embeddingModel_embeddingLayer.npy
 (This may take some time depending on the size of the dataset.)
