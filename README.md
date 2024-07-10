@@ -38,6 +38,14 @@ and change the selected_dataset_int value respectively.
 (e.g. by adding: if cfg.selected_dataset == 'my_awesome_dataset': df = create_my_awesome_df())
 Provide all constants (e.g. paths) in the config.py section RAW DATASETS.
 Create a function in raw_dataset.py that outputs a pandas Dataframe in the same format as for the example 
-dataset, with the 2 columns 'audio_path' and "['species_1', 'species_2', ...]"
+dataset, with the 3 columns "audio_path", "['species_1', 'species_2', ...]" and "subset"
 3. The dataframe will be stored at 
 results/my_awesome_dataset/01-dataset_metadata/my_awesome_dataset_metadata.pickle
+
+### STEP 2: Embed the dataset
+Using the embeddings specified in config.py, embeddings for different embedding models and layers are generated 
+and stored in results/my_awesome_dataset/02-transfer_learning\embeddings\embeddingModel_embeddingLayer.npy
+(This may take some time depending on the size of the dataset.)
+
+
+

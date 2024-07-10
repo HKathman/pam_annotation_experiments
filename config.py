@@ -12,7 +12,7 @@ if selected_dataset_int == 0:
 
 # transfer learning, select embedding models | all possible models for embedding
 selected_embeddings = [['birdnet_1', 'birdnet_2', 'birdnet_3'],
-                       ['yamnet_1'],
+                       # ['yamnet_1'],
                        ['vggish_0'],
                        ['vgg16_1', 'vgg16_2', 'vgg16_3'],
                        ['resnet152v2_1']]
@@ -111,7 +111,7 @@ path_example_dataset_metadata_original = Path(__file__).parent / dir_data / dir_
 ###########
 # BirdNet #
 ###########
-path_birdnet_pb = Path(__file__).parent / 'xl' / 'transfer_learning' / 'models' / 'BirdNET-Analyzer-V2.4' / 'V2.4' \
+path_birdnet_pb = Path(__file__).parent / 'transferLearning' / 'models' / 'BirdNET-Analyzer-V2.4' / 'V2.4' \
                   / 'BirdNET_GLOBAL_6K_V2.4_Model'
 birdnet_sample_rate = 48000 # 48kHz
 birdnet_sample_length_sec = 3
@@ -127,7 +127,7 @@ yamnet_sample_rate = 16000  # 16kHz
 ##########
 # VGGish #
 ##########
-path_checkpoint_vggish = str(Path(__file__).parent / 'xl' / 'transfer_learning' / 'models' / 'vggish' / 'vggish_model.ckpt')
+path_checkpoint_vggish = str(Path(__file__).parent / 'transferLearning' / 'models' / 'vggish' / 'vggish_model.ckpt')
 
 
 
