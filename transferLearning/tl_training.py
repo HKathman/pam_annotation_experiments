@@ -23,7 +23,7 @@ def train_and_save_transfer_learning_models():
     df_training_split = pd.read_pickle(cfg.path_results_dataset_tl / 'training_split.pickle')
 
     # get label for data
-    y_data = utils.getYoriginalFromMetadata()
+    y_data = utils.get_y_original_from_metadata()
 
     # iterate over all embeddings
     for embedding in embeddings:

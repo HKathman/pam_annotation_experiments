@@ -22,7 +22,7 @@ def create_data_tag_for_transfer_learning():
     label_col = [col for col in df.columns if '[' in col and ']' in col][0]
 
     # get tag column
-    tag_col = utils.getTagIterationColumn(0)
+    tag_col = utils.get_tag_iteration_column(0)
 
     # change unlabelled to training
     df[tag_col] = df[tag_col].replace(cfg.tag_unlabelled, cfg.tag_train)

@@ -23,7 +23,7 @@ def evaluate_transfer_learning_models(data_tag, f1_metric):
     df_training_split = pd.read_pickle(cfg.path_results_dataset_tl / 'training_split.pickle')
 
     # get label for data
-    y_data_original = utils.getYoriginalFromMetadata()
+    y_data_original = utils.get_y_original_from_metadata()
 
     # initialize df_f1
     df_f1 = pd.DataFrame({'embedding': pd.Series(cfg.selected_embeddings).explode()})

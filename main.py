@@ -8,7 +8,7 @@ import tensorflow as tf
 import config as cfg
 from preprocessing import raw_dataset
 from transferLearning import tl_model, tl_dataset_devision, tl_training, tl_evaluation
-from activeLearning import al_training #, al_evaluation as alEval
+from activeLearning import al_training, al_evaluation
 
 
 # STEP 1: Unifying dataset format
@@ -28,12 +28,8 @@ tl_training.train_and_save_transfer_learning_models()
 #    for data_tag in [cfg.tag_validation, cfg.tag_train, cfg.tag_test]:
 #        tl_evaluation.evaluate_transfer_learning_models(data_tag, f1_metric)
 
-
 # STEP 6: Embedding: 'birdnet_1' | Evaluate active learning uncertainty score generation (max vs. average)
 al_training.train_active_learning_models()
 
-
-'''
-STEP 7: Embedding: 'birdnet_1' | Create lists with variables used to create plots
-'''
-#alEval.evaluateActiveLearningModels()
+# STEP 7: Embedding: 'birdnet_1' | Create lists with variables used to create plots
+al_evaluation.evaluate_active_learning_models()

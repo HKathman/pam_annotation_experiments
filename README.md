@@ -67,7 +67,11 @@ The csv-files are saved to results/my_awesome_dataset/02-transfer_learning/evalu
 Trains Active Learning Models. Sampling strategies as defined in config.py are used. 
 Number of selected_initial_training_samples, selected_add_training_samples and selected_max_training_samples can be 
 specified in config.py.
-Results are stored in results/example_dataset/03-active_learning/experiments
+Results are stored in results/my_awesome_dataset/03-active_learning/experiments
+
+### STEP 7: Active Learning Evaluation
+Creates active learning tables with results for all random seeds and true positive, true negative, false positive 
+and false negative values. The tables are stored in results/my_awesome_dataset/03-active_learning/evaluation
 
 
 

@@ -18,8 +18,8 @@ def define_next_training_set(df, sampling_strategy, iteration, original_model, y
         return df
 
     # get last and next tag col
-    last_tag_col = utils.getTagIterationColumn(iteration-1)
-    tag_col = utils.getTagIterationColumn(iteration)
+    last_tag_col = utils.get_tag_iteration_column(iteration - 1)
+    tag_col = utils.get_tag_iteration_column(iteration)
 
     # prepare next tag_col
     df[tag_col] = df[last_tag_col]
@@ -200,8 +200,8 @@ Transfer active learning
 '''
 def sampling_transfer_uncertainty(df, iteration, model, nr_samp_method, y_pred, y_true, x_data, adapt_rounds=1):
     # get tag_col and last tag_col
-    tag_col = utils.getTagIterationColumn(iteration)
-    last_tag_col = utils.getTagIterationColumn(iteration - 1)
+    tag_col = utils.get_tag_iteration_column(iteration)
+    last_tag_col = utils.get_tag_iteration_column(iteration - 1)
 
     # Model preparation: freeze all layers except the last one
     for layer in model.layers[:-1]:
@@ -275,8 +275,8 @@ def sampling_transfer_uncertainty(df, iteration, model, nr_samp_method, y_pred, 
 
 def sampling_transfer_diversity(df, iteration, model, nr_samp_method, x_data_original, adapt_rounds=5):
     # get tag_col and last tag_col
-    tag_col = utils.getTagIterationColumn(iteration)
-    last_tag_col = utils.getTagIterationColumn(iteration - 1)
+    tag_col = utils.get_tag_iteration_column(iteration)
+    last_tag_col = utils.get_tag_iteration_column(iteration - 1)
 
     # Model preparation: freeze all layers except the last one
     for layer in model.layers[:-1]:
@@ -372,7 +372,7 @@ Validation data generation
 '''
 
 def get_validation_data(df, iteration, y_true, validation_split=0.2):
-    tag_col = utils.getTagIterationColumn(iteration)
+    tag_col = utils.get_tag_iteration_column(iteration)
 
     # filter training rows (Tag df and y array)
     df_training = df[df[tag_col] == cfg.tag_train]
@@ -402,7 +402,7 @@ def initial_training_data_devision():
     df_metadata = pd.read_pickle(cfg.path_results_dataset_metadata / file_name)
 
     # get tag iteration col and only use that column
-    tag_col = utils.getTagIterationColumn(0)
+    tag_col = utils.get_tag_iteration_column(0)
     df_metadata = df_metadata[[tag_col]]
 
     #nr of initial training examples

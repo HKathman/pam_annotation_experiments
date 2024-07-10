@@ -31,7 +31,7 @@ def create_example_dataset_metadata():
     df[str(sorted_species)] = df.apply(lambda row: [row[col] for col in sorted_species], axis=1)
 
     # get audio paths
-    audio_paths = utils.getAudioFilePaths(cfg.path_example_dataset_audio)
+    audio_paths = utils.get_audio_file_paths(cfg.path_example_dataset_audio)
     df['audio_key'] = df['fname'] + '_' + df['min_t'].astype(str) + '_' + df['max_t'].astype(str) + '.wav'
     audio_dict = {os.path.basename(path): path for path in audio_paths}
     df['audio_path'] = df['audio_key'].map(audio_dict)
@@ -48,7 +48,7 @@ def create_example_dataset_metadata():
                # 'date': 'date',
                # 'site': 'stratified_site',
                str(sorted_species): str(sorted_species),
-               'subset': utils.getTagIterationColumn(0)}
+               'subset': utils.get_tag_iteration_column(0)}
 
     df = df[list(columns.keys())]
     df.rename(columns=columns, inplace=True)

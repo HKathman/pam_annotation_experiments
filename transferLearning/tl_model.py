@@ -81,7 +81,7 @@ def birdnet_calculate_and_save_embeddings(df):
         for index, row in df.iterrows():
 
             # get audio data
-            audio_data = utils.loadAudioFile(row['audio_path'], embedding='birdnet')
+            audio_data = utils.load_audio_file(row['audio_path'], embedding='birdnet')
             audio_data = np.expand_dims(audio_data, axis=0)
 
             # get embeddings
@@ -121,7 +121,7 @@ def yamnet_calculate_embeddings(df):
         for index, row in df.iterrows():
 
             # get audio data
-            audio_data = utils.loadAudioFile(row['audio_path'], embedding='yamnet')
+            audio_data = utils.load_audio_file(row['audio_path'], embedding='yamnet')
 
             # get embeddings
             _, embedding, _ = model(audio_data)

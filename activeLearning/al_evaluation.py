@@ -1,21 +1,17 @@
 import os
-import re
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import f1_score, precision_score, recall_score
-from tqdm import tqdm
-import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 import config as cfg
 import utils
 
 
-def evaluateActiveLearningModels():
+def evaluate_active_learning_models():
 
     # create folder
-    utils.createFolder(cfg.path_results_dataset_al_evaluation)
+    utils.create_folder(cfg.path_results_dataset_al_evaluation)
 
     # define list of datatags
     data_tags = [cfg.tag_train, cfg.tag_unlabelled, cfg.tag_validation, cfg.tag_test]
@@ -25,7 +21,7 @@ def evaluateActiveLearningModels():
                           if experiment.endswith('.pickle')]
 
     # get y_true_original
-    y_true_original = utils.getYoriginalFromMetadata()
+    y_true_original = utils.get_y_original_from_metadata()
 
     # get list of all unique al sampling methods
     al_methods = list(set([experiment.split('-')[-3] for experiment in all_al_experiments]))
@@ -115,7 +111,3 @@ def evaluateActiveLearningModels():
 
         # save dataframe
         df.to_pickle(cfg.path_results_dataset_al_evaluation / file_name)
-
-
-if __name__ == '__main__':
-    evaluateActiveLearningModels()

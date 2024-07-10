@@ -31,7 +31,7 @@ def train_active_learning_models():
     x_data_original = np.load(cfg.path_results_dataset_tl_embedding / file_embedding)
 
     # get label for data
-    y_data_original = utils.getYoriginalFromMetadata()
+    y_data_original = utils.get_y_original_from_metadata()
 
     # initialise df to save annotation time
     df_computation_time = pd.DataFrame()
@@ -60,7 +60,7 @@ def train_active_learning_models():
             tf.random.set_seed(random_seed)
 
             # initialize output df
-            tag_col = utils.getTagIterationColumn(0)
+            tag_col = utils.get_tag_iteration_column(0)
             df = pd.DataFrame()
             df[tag_col] = df_initial_split[f'tag_seed_{random_seed}']
 
@@ -85,7 +85,7 @@ def train_active_learning_models():
                 df = df.copy()
 
                 # get current tag column
-                tag_col = utils.getTagIterationColumn(iteration)
+                tag_col = utils.get_tag_iteration_column(iteration)
 
                 # select samples for training
                 df = al_sampling.define_next_training_set(df, sampling_strategy, iteration, model, y_pred, y_data_original, x_data_original)

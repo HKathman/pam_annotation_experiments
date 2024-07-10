@@ -3,7 +3,6 @@ import os
 import librosa
 import numpy as np
 import pandas as pd
-from scipy import signal
 
 import config as cfg
 
@@ -14,10 +13,11 @@ import config as cfg
 def create_folder(path):
     os.makedirs(path, exist_ok=True)
 
+
 ################################
 # Extract Y from metadata file #
 ################################
-def getYoriginalFromMetadata():
+def get_y_original_from_metadata():
     file_metadata = cfg.selected_dataset + '_metadata.pickle'
     df_metadata = pd.read_pickle(cfg.path_results_dataset_metadata / file_metadata)
     label_column = df_metadata.columns[df_metadata.columns.str.contains(r'\[|\]')].tolist()
@@ -30,7 +30,7 @@ def getYoriginalFromMetadata():
 ####################
 # Audio Processing #
 ####################
-def getAudioFilePaths(directory):
+def get_audio_file_paths(directory):
     audio_extensions = ['.mp3', '.wav', '.flac']  # Add more extensions if needed
     audio_file_paths = []
 
@@ -41,7 +41,8 @@ def getAudioFilePaths(directory):
 
     return audio_file_paths
 
-def loadAudioFile(path,embedding='birdnet', offset=0.0, duration=None):
+
+def load_audio_file(path, embedding='birdnet', offset=0.0, duration=None):
     if embedding == 'birdnet':
         signal, sample_rate = librosa.load(path, sr=cfg.birdnet_sample_rate, offset=offset,
                                            duration=duration, mono=True, res_type="kaiser_fast")
@@ -62,16 +63,16 @@ def loadAudioFile(path,embedding='birdnet', offset=0.0, duration=None):
     return signal
 
 
-
 #############################
 # Active Learning Functions #
 #############################
-
-def getTagIterationColumn(iteration=''):
+def get_tag_iteration_column(iteration=''):
     return 'tag_iteration_' + str(iteration)
 
-def getPredictionIterationColumn(iteration=''):
+
+def get_prediction_iteration_column(iteration=''):
     return 'prediction_iteration_' + str(iteration)
 
-def createExperimentFileName(data, emb, layer, hidden_layer, sampl, ending=True):
+
+def create_experiment_file_name(data, emb, layer, hidden_layer, sampl, ending=True):
     return data.lower() + '_' + emb.lower() + '_' + str(layer) + '_' + str(hidden_layer) + '_' + sampl + '.pickle'
