@@ -8,7 +8,8 @@ from sklearn.model_selection import train_test_split
 import config as cfg
 import utils
 
-def createDataTagForTransferLearning():
+
+def create_data_tag_for_transfer_learning():
 
     if os.path.exists(cfg.path_results_dataset_tl / 'training_split.pickle'):
         return
@@ -63,4 +64,4 @@ def createDataTagForTransferLearning():
 
 
 if __name__ == '__main__':
-    createDataTagForTransferLearning()
+    create_data_tag_for_transfer_learning()

@@ -46,9 +46,14 @@ results/my_awesome_dataset/01-dataset_metadata/my_awesome_dataset_metadata.pickl
 1. Create a folder "models" in folder "transferLearning" and download birdnet v2.4 (https://github.com/kahst/BirdNET-Analyzer/tree/main/checkpoints)
 and vggish (https://github.com/tensorflow/models/tree/master/research/audioset/vggish) into that folder.
 Make sure that the file paths in config.py match your local file paths.
+
 Using the embeddings specified in config.py, embeddings for different embedding models and layers are generated 
 and stored in results/my_awesome_dataset/02-transfer_learning\embeddings\embeddingModel_embeddingLayer.npy
 (This may take some time depending on the size of the dataset.)
+
+### STEP 3: Create data devision dataframe (transfer learning without active learning)
+Creates a data devision df for transfer learning with the different datasets used for training. Stored in
+results/example_dataset/02-transfer_learning/training_split.pickle
 
 
 
